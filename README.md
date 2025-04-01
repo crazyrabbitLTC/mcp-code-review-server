@@ -1,4 +1,5 @@
 # Code Review Server
+[![smithery badge](https://smithery.ai/badge/@crazyrabbitLTC/mcp-code-review-server)](https://smithery.ai/server/@crazyrabbitLTC/mcp-code-review-server)
 
 A custom MCP server that performs code reviews using Repomix and LLMs.
 
@@ -12,6 +13,15 @@ A custom MCP server that performs code reviews using Repomix and LLMs.
 
 ## Installation
 
+### Installing via Smithery
+
+To install Code Review Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@crazyrabbitLTC/mcp-code-review-server):
+
+```bash
+npx -y @smithery/cli install @crazyrabbitLTC/mcp-code-review-server --client claude
+```
+
+### Manual Installation
 ```bash
 # Clone the repository
 git clone https://github.com/yourusername/code-review-server.git
