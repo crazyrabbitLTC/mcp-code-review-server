@@ -2,6 +2,10 @@
 
 A custom MCP server that performs code reviews using Repomix and LLMs.
 
+<a href="https://glama.ai/mcp/servers/@crazyrabbitLTC/mcp-code-review-server">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@crazyrabbitLTC/mcp-code-review-server/badge" alt="Code Review Server MCP server" />
+</a>
+
 ## Features
 
 - Flatten codebases using Repomix
@@ -195,4 +199,4 @@ The code review is returned in a structured JSON format:
 
 ## License
 
-MIT 
+MIT
