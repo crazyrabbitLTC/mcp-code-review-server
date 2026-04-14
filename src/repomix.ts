@@ -16,7 +16,7 @@
  * - Process analysis results
  */
 
-import { exec } from 'child_process';
+import { execFile } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as util from 'util';
@@ -66,32 +66,25 @@ export async function executeRepomix(options: RepomixOptions = {}): Promise<stri
   
   // The real implementation would call the Repomix CLI
   try {
-    const execPromise = util.promisify(exec);
+    const execFilePromise = util.promisify(execFile);
     const outputPath = path.join(process.cwd(), 'repomix-output.txt');
     
-    let command = 'repomix';
-    
-    // Add style flag
-    command += ' --style plain';
+    const args = ['--style', 'plain'];
     
     // Add include paths
     if (options.includePaths && options.includePaths.length > 0) {
-      const paths = options.includePaths.join(' ');
-      command += ` ${paths}`;
+      args.push(...options.includePaths);
     } else {
-      command += ' .';
+      args.push('.');
     }
-    
-    // Add output redirection
-    command += ` && cat repomix-output.txt`;
     
     // Mock return in case running tests
     if (process.argv.includes('test')) {
       return 'Repomix analysis completed';
     }
     
-    const { stdout } = await execPromise(command);
-    return stdout || outputPath;
+    await execFilePromise('repomix', args);
+    return outputPath;
   } catch (error) {
     console.error('Error executing Repomix:', error);
     
